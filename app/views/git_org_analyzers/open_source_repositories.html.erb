@@ -1,0 +1,61 @@
+<%=link_to 'Download CSV', git_analysis_path(format: 'csv')%>
+
+<h3> Most common languages used in Organization  </h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th> Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @repository_details[:most_languages].each do |language| %>
+      <tr>
+        <td> <%= language[0]%> </td>
+        <td> <%= language[1] %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3> Least common languages used in Organization </h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th> Count</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @repository_details[:least_languages].each do |language| %>
+      <tr>
+        <td> <%= language[0]%> </td>
+        <td> <%= language[1] %> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<hr/>
+
+<table border=1>
+  <thead>
+    <tr>
+      <th>Repostory Name</th>
+      <th>Language</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @repository_details[:repositories].each do |repository|%>
+      <tr>
+        <td><%= repository[:repository_name] %></td>
+        <td><%= repository[:repository_languages] %></td>
+        <td><%= repository[:created_at] %></td>
+      </tr>
+    <%end%>
+  </tbody>
+
+</table>
